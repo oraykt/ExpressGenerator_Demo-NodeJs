@@ -141,12 +141,23 @@ router.get('/aggregate', (req, res) => {
                 title: 1,
                 published: 1
             }
+        },
+        {
+            $sort: {
+                title: -1
+            }
+        },
+        {
+            $limit: 3
+        },
+        {
+            $skip: 1
         }
     ], (err, result) => {
         if (!err) {
             res.json(result);
         }
-    })
+    });
 })
 
 module.exports = router;
