@@ -5,9 +5,8 @@ const Book = require('../models/Book');
 
 router.post('/new', function (req, res, next) {
     const book = new Book({
-        title: 'Course',
-
-        // published: false,
+        title: 'Course4',
+        published: true,
         // comments: [
         //     {
         //         message: "Aweful!"
@@ -121,6 +120,21 @@ router.get('/limitAndSkip', (req, res) => {
     /*
     }.skip(2).limit(1) // It shows one data after skipped 2 of begin data
     */
+});
+
+router.get('/aggregate', (req, res) => {
+    Book.aggregate([
+        {
+            $match: {
+                published: false,
+                title: 'Course'
+            }
+        }
+    ], (err, result) => {
+        if (!err) {
+            res.json(result);
+        }
+    })
 })
 
 module.exports = router;
