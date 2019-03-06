@@ -64,11 +64,10 @@ router.get('/searchById', (req, res) => {
 });
 
 router.put('/update', (req, res) => {
-    Book.update(
-        { published: false },
+    Book.findByIdAndUpdate(
+        '5c7fc9c3a710687738e689ee',
         {
-            published: true,
-            title: 'Updated by Upsert'
+            title: 'Updated byId'
         },
         {
             upsert: true,
