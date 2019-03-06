@@ -40,8 +40,23 @@ router.get('/search', (req, res) => {
         } else {
             console.log(err);
         }
-    })
+    });
 });
+
+// router.get('/search', (req, res) => {
+//     Book.find({
+//         title: {
+//             $exist: true // title must defined
+//             $exist: false //
+//         }
+//     }, (err, data) => {
+//         if (!err) {
+//             res.json(data);
+//         } else {
+//             console.log(err);
+//         }
+//     });
+// });
 
 router.get('/searchOne', (req, res) => {
     Book.findOne({ title: 'Course' }, (err, data) => {
