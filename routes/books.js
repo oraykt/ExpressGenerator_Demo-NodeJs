@@ -130,10 +130,16 @@ router.get('/aggregate', (req, res) => {
                 // title: 'Course'
             }
         },
+        // {
+        //     $group: {
+        //         _id: "$title",
+        //         total: { $sum: 1 }
+        //     }
+        // },
         {
-            $group: {
-                _id: "$title",
-                total: { $sum: 1 }
+            $project: {
+                title: 1,
+                published: 1
             }
         }
     ], (err, result) => {
