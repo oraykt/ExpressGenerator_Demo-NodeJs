@@ -10,7 +10,9 @@ const Schema = mongoose.Schema;
 const BookSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        maxlength: [20, '`{PATH}` must be less then `{MAXLENGTH}` characters!'],
+
     },
     published: {
         type: Boolean,
@@ -21,6 +23,10 @@ const BookSchema = new Schema({
             message: String
         }
     ],
+    year: {
+        type: Number,
+        max: new Date().getFullYear() // year validation
+    },
     meta: {
         votes: Number,
         favs: Number
