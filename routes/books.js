@@ -81,5 +81,34 @@ router.put('/update', (req, res) => {
             }
         })
 });
-
+/*
+*   findOne() -> Remove()
+*   findOneAndRemove()
+*   remove()
+*/
+router.delete('/remove', (req, res) => {
+    // Book.findOne(
+    //     { _id: "5c7fc9c3a710687738e689ee" },
+    //     (err, book) => {
+    //         if (!err) {
+    //             res.json(book);
+    //         }
+    //     }
+    // );
+    // Book.findById('5c7fc9c3a710687738e689ee', (err, book) => {
+    //     book.remove((err, data) => {
+    //         res.json(data);
+    //     });
+    // });
+    // Book.findOneAndRemove(
+    //     { published: true }, (err, book) => {
+    //         res.json(book);
+    //     }
+    // );
+    // Book.remove(
+    //     { published: true }, (err, book) => {
+    //         res.json(book);
+    //     }
+    // );
+})
 module.exports = router;
