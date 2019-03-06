@@ -87,14 +87,6 @@ router.put('/update', (req, res) => {
 *   remove()
 */
 router.delete('/remove', (req, res) => {
-    // Book.findOne(
-    //     { _id: "5c7fc9c3a710687738e689ee" },
-    //     (err, book) => {
-    //         if (!err) {
-    //             res.json(book);
-    //         }
-    //     }
-    // );
     // Book.findById('5c7fc9c3a710687738e689ee', (err, book) => {
     //     book.remove((err, data) => {
     //         res.json(data);
@@ -110,5 +102,25 @@ router.delete('/remove', (req, res) => {
     //         res.json(book);
     //     }
     // );
+});
+
+router.get('/sort', (req, res) => {
+    Book.find({}, (err, data) => {
+        res.json(data);
+    }).sort(
+        {
+            // '$property' : $-1 (desc) $1 (asc)
+        }
+    );
+});
+
+router.get('/limitAndSkip', (req, res) => {
+    Book.find({}, (err, data) => {
+        res.json(data);
+    }).limit(2); // It shows 2 datas.
+    /*
+    }.skip(2).limit(1) // It shows one data after skipped 2 of begin data
+    */
 })
+
 module.exports = router;
