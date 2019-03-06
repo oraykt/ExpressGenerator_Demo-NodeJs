@@ -5,7 +5,7 @@ const Book = require('../models/Book');
 
 router.post('/new', function (req, res, next) {
     const book = new Book({
-        title: 'Course4',
+        title: 'Course',
         published: true,
         // comments: [
         //     {
@@ -126,8 +126,14 @@ router.get('/aggregate', (req, res) => {
     Book.aggregate([
         {
             $match: {
-                published: false,
-                title: 'Course'
+                published: true
+                // title: 'Course'
+            }
+        },
+        {
+            $group: {
+                _id: "$title",
+                total: { $sum: 1 }
             }
         }
     ], (err, result) => {
